@@ -7,3 +7,9 @@
 [submodule "mmpose"]
 	path = mmpose
 	url = https://github.com/open-mmlab/mmpose.git
+[submodule "mmaction"]
+	path = mmaction
+	url = https://github.com/open-mmlab/mmaction2.git
+[submodule "mmdet"]
+	path = mmdet
+	url = https://github.com/open-mmlab/mmdetection.git
