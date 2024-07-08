@@ -10,7 +10,7 @@ CONSOLE = Console()
 # https://schedule.readthedocs.io/en/stable/examples.html
 
 
-def pose_feasibility(cat, out_dir='mmaction2/data/phar/pose'):
+def pose_feasibility(cat, out_dir='mmaction2/data/altavara-actions/pose'):
     """Schedule for the pose_feasibility.py script."""
     CONSOLE.print(f'Checking pose feasibility for {cat}...', style='green')
     script_path = 'tools/analysis/pose_feasibility.py'

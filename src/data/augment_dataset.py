@@ -45,10 +45,10 @@ AUGS = [
 def parse_args():
     parser = argparse.ArgumentParser(description='Augmenting train set script')
     parser.add_argument('--src-dir',
-                        default='mmaction2/data/phar/train',
+                        default='mmaction2/data/altavara-actions/train',
                         help='source video directory')
     parser.add_argument('--out-dir',
-                        default='mmaction2/data/phar/train_aug/',
+                        default='mmaction2/data/altavara-actions/train_aug/',
                         help='augmented video directory')
     parser.add_argument('--rate',
                         type=float,

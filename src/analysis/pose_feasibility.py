@@ -31,9 +31,9 @@ def parse_args():
                             'Also generates the .pkl pose dicts.')
     parser.add_argument('label', help='class/label to examine')
     parser.add_argument('--src-dir',
-                        default='mmaction2/data/phar',
+                        default='mmaction2/data/altavara-actions',
                         help='directory of dataset')
-    parser.add_argument('--out-dir', default='mmaction2/data/phar/pose')
+    parser.add_argument('--out-dir', default='mmaction2/data/altavara-actions/pose')
     parser.add_argument('--ann',
                         type=str,
                         default='resources/annotations/pose.txt',

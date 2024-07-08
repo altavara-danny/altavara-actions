@@ -390,7 +390,7 @@ def parse_args():
     parser.add_argument('ann', type=str, help='dataset annotations')
     parser.add_argument('--out-dir',
                         type=str,
-                        default='mmaction2/data/phar/pose',
+                        default='mmaction2/data/altavara-actions/pose',
                         help='output dir')
     parser.add_argument('--det-score-thr',
                         type=float,

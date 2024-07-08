@@ -1,6 +1,6 @@
 # * dataset settings
 dataset_type = 'AudioFeatureDataset'
-data_root = ('/home/rejnald/projects/side_projects/phar/mmaction2/data/phar/'
+data_root = ('/home/rejnald/projects/side_projects/altavara-actions/mmaction2/data/altavara-actions/'
              'audio_feature/filtered_20/')
 data_root_val = data_root
 data_root_test = data_root

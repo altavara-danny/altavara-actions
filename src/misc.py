@@ -57,11 +57,11 @@ def extract_labels_pose(path: str):
             out.write(f"{row['frame_dir']} {row['label']}\n")
 
 
-# extract_labels_pose('mmaction2/data/phar/pose/kinesphere_val.pkl')
+# extract_labels_pose('mmaction2/data/altavara-actions/pose/kinesphere_val.pkl')
 # -----------------------------------------------------------------------------
 
 
-def visualize_heatmaps(src_dir='mmaction2/data/phar',
+def visualize_heatmaps(src_dir='mmaction2/data/altavara-actions',
                        ann='resources/annotations/annotations_pose.txt',
                        out_dir='demos/pose',
                        rate=0.1,
@@ -142,7 +142,7 @@ def merge_pose(path, split, level=2):
         pickle.dump(result, out, protocol=pickle.HIGHEST_PROTOCOL)
 
 
-# merge_pose('mmaction2/data/phar/pose/val', 'val')
+# merge_pose('mmaction2/data/altavara-actions/pose/val', 'val')
 # -----------------------------------------------------------------------------
 
 
@@ -184,7 +184,7 @@ def filter_pose(path, thr=0.4, correct_rate=0.5, filter_pose=False):
     mmcv.dump(annotations, osp.basename(path))
 
 
-# filter_pose('mmaction2/data/phar/pose/kinesphere_train.pkl',
+# filter_pose('mmaction2/data/altavara-actions/pose/kinesphere_train.pkl',
 #             thr=0.5,
 #             correct_rate=0.5)
 # -----------------------------------------------------------------------------
@@ -224,7 +224,7 @@ def read_pickel(path):
         print(annotations)
 
 
-# read_pickel('mmaction2/data/phar/pose/val/69/017S966E.pkl')
+# read_pickel('mmaction2/data/altavara-actions/pose/val/69/017S966E.pkl')
 # -----------------------------------------------------------------------------
 
 
@@ -261,7 +261,7 @@ def convert_pose_label(
             mmcv.dump(annotations, item, protocol=pickle.HIGHEST_PROTOCOL)
 
 
-# convert_pose_label('mmaction2/data/phar/pose/val/')
+# convert_pose_label('mmaction2/data/altavara-actions/pose/val/')
 # -----------------------------------------------------------------------------
 
 
@@ -275,7 +275,7 @@ def merge_videos(*args):
 
 
 # merge_videos(
-#     'mmaction2/data/phar/val/69/0B6U5LKR.mp4',
+#     'mmaction2/data/altavara-actions/val/69/0B6U5LKR.mp4',
 #     )
 # -----------------------------------------------------------------------------
 
@@ -412,7 +412,7 @@ def trim_dataset(path, keep_rate):
                   style='green')
 
 
-# trim_dataset('mmaction2/data/phar/audio/pathhere', 0.14)
+# trim_dataset('mmaction2/data/altavara-actions/audio/pathhere', 0.14)
 # -----------------------------------------------------------------------------
 
 
@@ -438,7 +438,7 @@ def gen_single_ann_file(path, label, id, splits=['train', 'val'], audio=False):
         CONSOLE.print(f'Generated {out}', style='green')
 
 
-# gen_single_ann_file(path='mmaction2/data/phar/audio_feature/filtered_20/',
+# gen_single_ann_file(path='mmaction2/data/altavara-actions/audio_feature/filtered_20/',
 #                     label='kissing',
 #                     id=4,
 #                     audio=True)
@@ -473,7 +473,7 @@ def augment_video(path: str, augment: Callable):
 
 
 # from vidaug import augmentors as va
-# augment_video(path='mmaction2/data/phar/val/69/017S966E.mp4',
+# augment_video(path='mmaction2/data/altavara-actions/val/69/017S966E.mp4',
 #               augment=va.PiecewiseAffineTransform(displacement=2,
 #                                 displacement_kernel=1,
 #                                 displacement_magnification=2))

@@ -24,7 +24,7 @@ def parse_args():
                         default='./mlruns',
                         help='mlrun storage dir. Leave default.')
     parser.add_argument('--data-dir',
-                        default='mmaction2/data/phar/',
+                        default='mmaction2/data/altavara-actions/',
                         help='path to train/val/test dataset')
     args = parser.parse_args()
     return args

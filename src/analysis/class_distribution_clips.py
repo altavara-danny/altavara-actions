@@ -19,7 +19,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='calculates number of clips / annotation classes')
     parser.add_argument('--src-dir',
-                        default='mmaction2/data/phar',
+                        default='mmaction2/data/altavara-actions',
                         help='the dir that contains all the videos')
     parser.add_argument('--splits',
                         nargs='+',

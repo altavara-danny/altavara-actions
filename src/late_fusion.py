@@ -66,8 +66,8 @@ def parse_args():
         nargs='+',
         help='list of testing data',
         default=[
-            'mmaction2/data/phar/val.txt',
-            'mmaction2/data/phar/audio_feature/filtered_20/val.txt'
+            'mmaction2/data/altavara-actions/val.txt',
+            'mmaction2/data/altavara-actions/audio_feature/filtered_20/val.txt'
         ])
     parser.add_argument('--apply-softmax', action='store_true')
     parser.add_argument('--top-k',

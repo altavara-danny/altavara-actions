@@ -1,10 +1,10 @@
 dataset_type = 'AudioFeatureDataset'
-data_root = 'phar/mmaction2/data/phar/audio_feature/filtered_20/'
-data_root_val = 'mmaction2/data/phar/audio_feature/filtered_20/'
-data_root_test = 'mmaction2/data/phar/audio_feature/filtered_20/'
-ann_file_train = 'mmaction2/data/phar/audio_feature/filtered_20//train.txt'
-ann_file_val = 'mmaction2/data/phar/audio_feature/filtered_20//val.txt'
-ann_file_test = 'mmaction2/data/phar/audio_feature/filtered_20//val.txt'
+data_root = 'altavara-actions/mmaction2/data/altavara-actions/audio_feature/filtered_20/'
+data_root_val = 'mmaction2/data/altavara-actions/audio_feature/filtered_20/'
+data_root_test = 'mmaction2/data/altavara-actions/audio_feature/filtered_20/'
+ann_file_train = 'mmaction2/data/altavara-actions/audio_feature/filtered_20//train.txt'
+ann_file_val = 'mmaction2/data/altavara-actions/audio_feature/filtered_20//val.txt'
+ann_file_test = 'mmaction2/data/altavara-actions/audio_feature/filtered_20//val.txt'
 num_classes = 4
 model = dict(type='AudioRecognizer',
              backbone=dict(type='ResNetAudio',

@@ -73,7 +73,7 @@ def parse_args():
                         default='resources/annotations/all.txt',
                         help='annotation file')
     parser.add_argument('--out-dir',
-                        default='mmaction2/data/phar',
+                        default='mmaction2/data/altavara-actions',
                         help='out video directory')
     parser.add_argument('--split',
                         type=float,
