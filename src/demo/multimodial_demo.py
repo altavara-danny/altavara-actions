@@ -367,7 +367,7 @@ def audio_inference(clip: str, coeffs: list):
     out_audio = f'{osp.splitext(clip)[0]}.wav'
     subprocess.run(['ffmpeg', '-i', clip, '-map', '0:a', '-y', out_audio],
                    capture_output=True)
-    time.sleep(15)
+    time.sleep(1)
 
     data, rate = sf.read(out_audio)
     meter = pyln.Meter(rate)  # meter works with decibels
@@ -382,7 +382,10 @@ def audio_inference(clip: str, coeffs: list):
         ['python', AUDIO_FEATURE_SCRIPT, TEMP, TEMP, '--ext', 'wav'],
         capture_output=True)
 
-    results = inference_recognizer(AUDIO_MODEL, out_feature)
+    # Load the numpy array from the .npy file
+    audio_features = np.load(out_feature)
+
+    results = inference_recognizer(AUDIO_MODEL, audio_features)
     results = [(AUDIO_LABELS[k[0]], k[1]) for k in results]
     PREDS[clip]['audio'] = {}
     for r in results:
@@ -548,38 +551,38 @@ def main():
     torch.cuda.empty_cache()
 
     global PREDS
-    # if args.audio_checkpoint:
-    #     AUDIO_MODEL = init_recognizer(args.audio_config,
-    #                                   args.audio_checkpoint,
-    #                                   device=args.device)
-    #     global LOUD_WEIGHT
-    #     loud_weights = yaml.load(open(args.loudness_weights, 'r'),
-    #                              Loader=yaml.FullLoader)
-    #     LOUD_WEIGHT = sum(loud_weights.values()) / len(loud_weights)
+    if args.audio_checkpoint:
+        AUDIO_MODEL = init_recognizer(args.audio_config,
+                                      args.audio_checkpoint,
+                                      device=args.device)
+        global LOUD_WEIGHT
+        loud_weights = yaml.load(open(args.loudness_weights, 'r'),
+                                 Loader=yaml.FullLoader)
+        LOUD_WEIGHT = sum(loud_weights.values()) / len(loud_weights)
 
-    #     CONSOLE.print('Performing audio inference...', style='bold green')
-    #     for clip in tqdm(PREDS):
-    #         audio_inference(clip, args.coefficients)
-    #     verbose_print(
-    #         f'Finished in {round((time.time() - start_time) / 60, 2)} min',
-    #         style='green')
-    #     torch.cuda.empty_cache()
+        CONSOLE.print('Performing audio inference...', style='bold green')
+        for clip in tqdm(PREDS):
+            audio_inference(clip, args.coefficients)
+        verbose_print(
+            f'Finished in {round((time.time() - start_time) / 60, 2)} min',
+            style='green')
+        torch.cuda.empty_cache()
 
-    # if args.skeleton_checkpoint:
-    #     DET_MODEL = init_detector(args.det_config, args.det_checkpoint,
-    #                               args.device)
-    #     POSE_MODEL = init_pose_model(args.pose_config, args.pose_checkpoint,
-    #                                  args.device)
-    #     SK_MODEL = init_recognizer(args.skeleton_config,
-    #                                args.skeleton_checkpoint, args.device)
+    if args.skeleton_checkpoint:
+        DET_MODEL = init_detector(args.det_config, args.det_checkpoint,
+                                  args.device)
+        POSE_MODEL = init_pose_model(args.pose_config, args.pose_checkpoint,
+                                     args.device)
+        SK_MODEL = init_recognizer(args.skeleton_config,
+                                   args.skeleton_checkpoint, args.device)
 
-    #     CONSOLE.print('Performing skeleton inference...', style='bold green')
-    #     for clip in tqdm(PREDS):
-    #         skeleton_inference(clip, args)
-    #     verbose_print(
-    #         f'Finished in {round((time.time() - start_time) / 60, 2)} min',
-    #         style='green')
-    #     torch.cuda.empty_cache()
+        CONSOLE.print('Performing skeleton inference...', style='bold green')
+        for clip in tqdm(PREDS):
+            skeleton_inference(clip, args)
+        verbose_print(
+            f'Finished in {round((time.time() - start_time) / 60, 2)} min',
+            style='green')
+        torch.cuda.empty_cache()
 
     PREDS = dict(sorted(PREDS.items()))
     verbose_print(PREDS)
