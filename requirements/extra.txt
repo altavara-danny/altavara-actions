@@ -1,0 +1,9 @@
+librosa==0.8.1
+lws==1.2.7
+mlflow
+moviepy==1.0.3
+numpy==1.23.0
+pyloudnorm==0.1.0
+rich
+schedule
+SoundFile==0.10.3.post1
